@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_b533457e33d88a7927e2ac8ca9417e575d95f8f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/support-annotations-25.1.0_fb8ffb6f2c380e0aa6124fb72b0ccebc761c2576.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_c05fcaac9fbbd000f8ed6f2310726ebc2f392c6f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_050dff7c7c0e790d8c3de64e89f1ae37b28e9046.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_cae72f3ae030fbdfdcde11d9b95969743898209c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_7fa48cb1d24b6794d0181b535756e00cc107e9ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_92f38d082d7da0a28be954b99ed871d22c0efb74.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_bf68db43d3b01d3befae6817ac78369526766d51.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-25.1.0_41ca1c69881cca741321ff9d1bf88d43ea0df7be.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_60b7ec075fa0bed90e8ffe05ac3992502332f4bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/xiaosheng/Desktop/Android Lab 1 RecyclerView Exercise/Exercise-RecyclerViewLayout/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_483530368a4fc606642ed2bd0b2cb5517d2358c6.jar" />
+    </item>
+
+</items>

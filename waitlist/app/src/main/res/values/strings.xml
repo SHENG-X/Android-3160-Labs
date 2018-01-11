@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Waitlist</string>
+    <string name="guest_name_hint">Guest Name</string>
+    <string name="party_size_hint">Party size (max 99)</string>
+    <string name="add_button_text">ADD</string>
+    <string name="default_party_size">1</string>
+    <string name="default_guest_name">Guest NoName</string>
+</resources>
