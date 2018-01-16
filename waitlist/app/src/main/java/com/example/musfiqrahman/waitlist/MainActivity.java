@@ -1,6 +1,7 @@
 package com.example.musfiqrahman.waitlist;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     EditText guestNameInput, guestNumInput;
     List<GuestInfo> guestIn;
+    GuestDBAdapter guestDBAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.all_guest_list_view);
@@ -33,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         guestIn = new ArrayList<>();
         btn=(Button)findViewById(R.id.add_to_waitlist_button);
+        guestDBAdapter=new GuestDBAdapter(this);
+        guestDBAdapter.open();
+        Cursor cursor=guestDBAdapter.getAllRows();
+        if(cursor.moveToFirst()){
+            cursor.moveToFirst();
+            while(cursor.moveToNext()){
+                String guestname=cursor.getString(cursor.getColumnIndex(GuestDBContractor.DB_GUEST_NAME));
+                int guest_num=cursor.getInt(cursor.getColumnIndex(String.valueOf(GuestDBContractor.DB_GUEST_NUMBER)));
+                GuestInfo guestInfo = new GuestInfo(guestname, guest_num);
+                guestIn.add(guestInfo);
+                //Toast.makeText(view.getContext(),guestname+" "+id+" ",Toast.LENGTH_LONG).show();
+            }
+        };
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +67,21 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(view.getContext(), "Add success!", Toast.LENGTH_LONG).show();
                             InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                             inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+
+
+                            guestDBAdapter.insertRow(name, Integer.parseInt(guestNum));
+//                            Cursor cursor=guestDBAdapter.getAllRows();
+//                            if(cursor.moveToFirst()){
+//                                cursor.moveToFirst();
+//                                while(cursor.moveToNext()){
+//                                    String guestname=cursor.getString(cursor.getColumnIndex(GuestDBContractor.DB_GUEST_NAME));
+//                                    int guest_num=cursor.getInt(cursor.getColumnIndex(String.valueOf(GuestDBContractor.DB_GUEST_NUMBER)));
+//                                    GuestInfo guestInfo = new GuestInfo(guestname, guest_num);
+//                                    guestIn.add(guestInfo);
+//                                    //Toast.makeText(view.getContext(),guestname+" "+id+" ",Toast.LENGTH_LONG).show();
+//                                }
+//                            }
+
                         }
                         else {
                             Toast.makeText(view.getContext(), "Guest Number Cannot Be Zero.", Toast.LENGTH_LONG).show();
