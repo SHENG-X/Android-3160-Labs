@@ -47,11 +47,16 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(view.getContext(), "Please Enter Guest Name and Guest Number.", Toast.LENGTH_LONG).show();
                 } else {
                         guestNo = Integer.parseInt(guestNum);
-                        GuestInfo guestInfo = new GuestInfo(name, guestNo);
-                        guestIn.add(guestInfo);
-                        Toast.makeText(view.getContext(), "Add success!", Toast.LENGTH_LONG).show();
-                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                        if(guestNo>0){
+                            GuestInfo guestInfo = new GuestInfo(name, guestNo);
+                            guestIn.add(guestInfo);
+                            Toast.makeText(view.getContext(), "Add success!", Toast.LENGTH_LONG).show();
+                            InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                        }
+                        else {
+                            Toast.makeText(view.getContext(), "Guest Number Cannot Be Zero.", Toast.LENGTH_LONG).show();
+                        }
                 }
             }
             });
