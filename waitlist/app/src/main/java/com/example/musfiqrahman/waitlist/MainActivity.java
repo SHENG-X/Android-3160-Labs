@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor=guestDBAdapter.getAllRows();
         if(cursor.moveToFirst()){
             cursor.moveToFirst();
+            //Important: get the first record from table
+            String guestname2=cursor.getString(cursor.getColumnIndex(GuestDBContractor.DB_GUEST_NAME));
+            int guest_num2=cursor.getInt(cursor.getColumnIndex(String.valueOf(GuestDBContractor.DB_GUEST_NUMBER)));
+            GuestInfo guestInfo2 = new GuestInfo(guestname2, guest_num2);
+            guestIn.add(guestInfo2);
+            //-------------------------
             while(cursor.moveToNext()){
                 String guestname=cursor.getString(cursor.getColumnIndex(GuestDBContractor.DB_GUEST_NAME));
                 int guest_num=cursor.getInt(cursor.getColumnIndex(String.valueOf(GuestDBContractor.DB_GUEST_NUMBER)));
