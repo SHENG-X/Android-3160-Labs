@@ -1,13 +1,11 @@
 package com.example.musfiqrahman.waitlist;
 
-import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.List;
 
 
 /**
@@ -15,45 +13,42 @@ import java.util.List;
  */
 
 public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.GuestViewHolder> {
-    List<GuestInfo> guestList;
-    TextView guestNo,guestName;
-    LayoutInflater inflater;
-    public GuestListAdapter(Context context) {
-        inflater=LayoutInflater.from(context);
-    }
+    private Cursor mCursor;
 
     @Override
     public GuestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v=inflater.inflate(R.layout.guest_item_list,parent,false);
-        GuestViewHolder vh=new GuestViewHolder(v);
-        return vh;
+        Log.d("adp","cp1");
+        return new GuestViewHolder(parent);
     }
 
     @Override
     public void onBindViewHolder(GuestViewHolder holder, int position) {
-        GuestInfo guestInfo=guestList.get(position);
-        guestName.setText(guestInfo.getGuestName());
-        guestNo.setText(String.valueOf(guestInfo.getPartySize()));
+        if(mCursor.moveToPosition(position)){
+            holder.guestName.setText(mCursor.getString(mCursor.getColumnIndex(GuestContract.GuestEntity.COLUMN_GUEST_NAME)));
+            holder.guestNo.setText(mCursor.getString(mCursor.getColumnIndex(GuestContract.GuestEntity.COLUMN_PARTY_SIZE)));
+        }
     }
 
     @Override
     public int getItemCount() {
-        if(guestList != null)
-            return guestList.size();
-        return 0;
+        return mCursor==null?0:mCursor.getCount();
+    }
+
+    public void setGuest(Cursor cursor){
+        mCursor=cursor;
+        Log.d("adp","cp3");
+        notifyDataSetChanged();
     }
 
     public class GuestViewHolder extends RecyclerView.ViewHolder{
-
-        public GuestViewHolder(View itemView) {
-            super(itemView);
+        TextView guestName, guestNo;
+        public GuestViewHolder(ViewGroup parent) {
+            super(LayoutInflater.from(parent.getContext()).inflate(
+                    R.layout.guest_item_list, parent, false));
             guestNo=(TextView)itemView.findViewById(R.id.party_size_text_view);
             guestName=(TextView)itemView.findViewById(R.id.name_text_view);
         }
     }
-    public void addGuest(List<GuestInfo> guestInfoList){
-        guestList=guestInfoList;
-        notifyDataSetChanged();
-    }
+
 
 }

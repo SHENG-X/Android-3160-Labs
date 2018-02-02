@@ -2,9 +2,7 @@ package com.example.musfiqrahman.waitlist;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-
-import java.util.List;
+import android.database.Cursor;
 
 /**
  * Created by ShengXiao on 2018-01-22.
@@ -12,7 +10,7 @@ import java.util.List;
 
 public class GuestViewModel extends AndroidViewModel {
     private GuestRepository myGuestRepository;
-    private LiveData<List<GuestInfo>> guestInfoMutableLiveData;
+    private Cursor guestInfoMutableLiveData;
 
 
     public GuestViewModel(Application app) {
@@ -21,7 +19,7 @@ public class GuestViewModel extends AndroidViewModel {
         guestInfoMutableLiveData=myGuestRepository.getMyGuestInfo();
     }
 
-    public LiveData<List<GuestInfo>> getGuestInfoMutableLiveData() {
+    public Cursor getGuestInfoMutableLiveData() {
         return guestInfoMutableLiveData;
     }
 

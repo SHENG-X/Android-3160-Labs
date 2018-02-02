@@ -1,22 +1,24 @@
 package com.example.musfiqrahman.waitlist;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
+    private static final int LOADER_GUEST = 1;
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     GuestListAdapter mAdapter;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     EditText guestNameInput, guestNumInput;
     GuestDB guestDB;
     GuestViewModel guestViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,17 +36,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        btn=(Button)findViewById(R.id.add_to_waitlist_button);
-        guestViewModel= ViewModelProviders.of(this).get(GuestViewModel.class);
-        mAdapter = new GuestListAdapter(getApplicationContext());
-
-        Observer<List<GuestInfo>> guestOberver=new Observer<List<GuestInfo>>() {
-            @Override
-            public void onChanged(@Nullable List<GuestInfo> guestInfos) {
-                mAdapter.addGuest(guestInfos);
-            }
-        };
-        guestViewModel.getGuestInfoMutableLiveData().observe(this,guestOberver);
+        btn = (Button) findViewById(R.id.add_to_waitlist_button);
+        guestViewModel = ViewModelProviders.of(this).get(GuestViewModel.class);
+        mAdapter = new GuestListAdapter();
+        recyclerView.setAdapter(mAdapter);
+        getSupportLoaderManager().initLoader(LOADER_GUEST, null, mLoaderCallbacks);
+        Log.d("erro","cp1");
         //guestDB=GuestDB.getDB(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,23 +57,59 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(view.getContext(), "Please Enter Guest Name and Guest Number.", Toast.LENGTH_LONG).show();
                 } else {
                     guestNo = Integer.parseInt(guestNum);
-                    if(guestNo>0){
+                    if (guestNo > 0) {
                         GuestInfo guestInfo = new GuestInfo(name, guestNo);
-
                         guestViewModel.setGuestInfoMutableLiveData(guestInfo);
-
+                        getSupportLoaderManager().restartLoader(LOADER_GUEST, null, mLoaderCallbacks);
                         Toast.makeText(view.getContext(), "Add success!", Toast.LENGTH_LONG).show();
                         InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                         inputManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                    }
-                    else {
+
+                    } else {
                         Toast.makeText(view.getContext(), "Guest Number Cannot Be Zero.", Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
+        Log.d("erro","cp2");
 
-        recyclerView.setAdapter(mAdapter);
+
     }
+
+    private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallbacks = new LoaderManager.LoaderCallbacks<Cursor>() {
+        @Override
+        public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+            Log.d("onc","231");
+            switch (id) {
+                case LOADER_GUEST:
+                    return new CursorLoader(getApplicationContext(),
+                            GuestContract.GuestEntity.CONTENT_URI,
+                            new String[]{GuestContract.GuestEntity.COLUMN_GUEST_NAME, GuestContract.GuestEntity.COLUMN_PARTY_SIZE},
+                            null, null, null);
+                default:
+                    throw new IllegalArgumentException();
+            }
+        }
+
+        @Override
+        public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+            Log.d("onc","222");
+            switch (loader.getId()) {
+                case LOADER_GUEST:
+                    mAdapter.setGuest(data);
+                    break;
+            }
+        }
+
+        @Override
+        public void onLoaderReset(Loader<Cursor> loader) {
+            switch (loader.getId()) {
+                case LOADER_GUEST:
+                    mAdapter.setGuest(null);
+                    break;
+            }
+        }
+    };
+
 
 }

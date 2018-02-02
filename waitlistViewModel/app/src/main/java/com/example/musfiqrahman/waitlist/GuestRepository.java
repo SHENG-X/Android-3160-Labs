@@ -1,10 +1,8 @@
 package com.example.musfiqrahman.waitlist;
 
 import android.app.Application;
-import android.arch.lifecycle.LiveData;
+import android.database.Cursor;
 import android.os.AsyncTask;
-
-import java.util.List;
 
 /**
  * Created by ShengXiao on 2018-01-22.
@@ -12,14 +10,14 @@ import java.util.List;
 
 public class GuestRepository {
     private GuestDAO guestDAO;
-    private LiveData<List<GuestInfo>> myGuestInfo;
+    private Cursor myGuestInfo;
 
     public GuestRepository(Application app) {
         guestDAO=GuestDB.getDB(app).guestDAO();
         myGuestInfo=guestDAO.getAllGuestsInfo();
     }
 
-    public LiveData<List<GuestInfo>> getMyGuestInfo(){
+    public Cursor getMyGuestInfo(){
         return myGuestInfo;
     }
 

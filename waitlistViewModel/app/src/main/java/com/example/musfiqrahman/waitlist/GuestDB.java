@@ -16,7 +16,7 @@ public abstract class GuestDB extends RoomDatabase{
 
     public static GuestDB getDB(Context ctx){
         if(myguestDB==null){
-         myguestDB= Room.databaseBuilder(ctx,GuestDB.class,"guestinfo").build();
+         myguestDB= Room.databaseBuilder(ctx,GuestDB.class,"guestinfo").allowMainThreadQueries().build();
         }
         return myguestDB;
     }
