@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.musfiqrahman.watercount.sync.ReminderTasks;
 import com.example.musfiqrahman.watercount.sync.WaterReminderIntentService;
+import com.example.musfiqrahman.watercount.utilities.NotificaitonUtilities;
 import com.example.musfiqrahman.watercount.utilities.PreferenceUtilities;
 
 public class MainActivity extends AppCompatActivity implements
@@ -100,5 +101,10 @@ public class MainActivity extends AppCompatActivity implements
         } else if (PreferenceUtilities.KEY_CHARGING_REMINDER_COUNT.equals(key)) {
             updateChargingReminderCount();
         }
+    }
+
+
+    public void showNotificaiton(View view){
+        NotificaitonUtilities.remindUser(this);
     }
 }

@@ -15,21 +15,29 @@ package com.example.musfiqrahman.watercount.sync;
 
 import android.content.Context;
 
+import com.example.musfiqrahman.watercount.utilities.NotificaitonUtilities;
 import com.example.musfiqrahman.watercount.utilities.PreferenceUtilities;
 
 public class ReminderTasks{
     public static final String ACTION_INCREMENT_WATER_COUNT="incrementWaterCount";
     public static final String ACTION_INCREMENT_REMINDER_COUNT="incrementReminderCount";
+    public static final String ACTION_IGNORE_REMINDER="ignoreReminder";
 
 
     public static void executeTask(Context context, String action){
         if(action==ACTION_INCREMENT_WATER_COUNT){
             incrementWaterCount(context);
         }
+        else if(action==ACTION_IGNORE_REMINDER){
+            ignoreReminder(context);
+        }
     }
 
     private static void incrementWaterCount(Context context){
         PreferenceUtilities.incrementWaterCount(context);
+    }
+    private static void ignoreReminder(Context context){
+        NotificaitonUtilities.clearAllNotifications(context);
     }
 
 }
