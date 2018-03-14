@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MT_RecyclerView_Delete</string>
+    <string-array name="items">
+        <item>This is item one</item>
+        <item>This is item two</item>
+        <item>This is item three</item>
+        <item>This is item four</item>
+        <item>This is item five</item>
+        <item>This is item six</item>
+        <item>This is item seven</item>
+        <item>This is item eight</item>
+    </string-array>
+</resources>
