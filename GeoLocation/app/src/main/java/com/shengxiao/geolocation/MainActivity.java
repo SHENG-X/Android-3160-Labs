@@ -2,6 +2,8 @@ package com.shengxiao.geolocation;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -14,18 +16,27 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
     private static final int REQ_CODE_LOCATION=100;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private LocationRequest mLocationRequest;
     private LocationCallback mLocationCallback;
     private TextView textView;
+    private Geocoder mGeocoder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView=(TextView)findViewById(R.id.textview);
+
+        mGeocoder=new Geocoder(this, Locale.getDefault());
+
         checkLocationPermission();
         mFusedLocationProviderClient=new FusedLocationProviderClient(this);
 
@@ -38,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Location","No location available!");// not work
                     return;
                 }
-                textView.setText(locationResult.getLastLocation().getLongitude()+"$$$$$$$$"+locationResult.getLastLocation().getLatitude());
+                try {
+                    List<Address> addressList=mGeocoder.getFromLocation(locationResult.getLastLocation().getLatitude(),locationResult.getLastLocation().getLongitude(),1);
+                    textView.setText(addressList.toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 Log.d("Locaiton",locationResult.getLastLocation().getLongitude()+"$$$$$$$$"+locationResult.getLastLocation().getLatitude());//not work.
             }
