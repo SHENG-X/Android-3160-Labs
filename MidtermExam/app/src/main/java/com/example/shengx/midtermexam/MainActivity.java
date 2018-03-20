@@ -13,6 +13,12 @@ public class MainActivity extends AppCompatActivity {
     Button mathBtn, triviaBtn;
     EditText num1,num2;
     Intent myintent;
+
+    private static ResponseDB responseDB;
+
+    private static ResponseDBHelper responseDBHelper;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         triviaBtn=(Button)findViewById(R.id.triviaBtn);
         num1=(EditText)findViewById(R.id.num1);
         num2=(EditText)findViewById(R.id.num2);
+
+
+        responseDB=ResponseDB.getDB(this);
+
 
         mathBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         }else if(!number_1.equals("")&&!number_2.equals("")) {
             myintent.setAction(method);
             myintent.putExtra("number",number_1+".."+number_2);
+            myintent.putExtra("nm1",number_1);
+            myintent.putExtra("nm2",number_2);
         }
         startService(myintent);
     }

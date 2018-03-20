@@ -6,6 +6,10 @@ import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,6 +29,7 @@ public class GetNumberService extends IntentService {
     public static String numberMethod_trivia="trivia";
     private static String numberMethod="";
     public static String accessURL=NUMBER_URL+"/"+numberBuilder+"/"+numberMethod+"?json";
+
 
     public static void setNumber(String number){
         numberBuilder=number;
@@ -77,7 +82,30 @@ public class GetNumberService extends IntentService {
         return buffer.toString();
     }
 
+    public static String parseJson(String json, int num1, int num2){
+        String text=null;
+        int number= 0;
+        boolean found= false;
+        String type=null;
+        try{
+            JSONObject jsonObject=new JSONObject(json);
+            for(int i=num1;i<=num2;i++){
+                JSONObject response=new JSONObject(jsonObject.getString(i+""));
+                String restext=response.getString("text");
+                int resnum=response.getInt("number");
+                boolean resboolean=response.getBoolean("found");
+                String restype=response.getString("type");
+                Response mres=new Response(restext,resnum,resboolean,restype);
+                //INSERT TO DB
 
+                Log.d("Log--2","Result number:"+restext);
+            }
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
@@ -99,5 +127,6 @@ public class GetNumberService extends IntentService {
         GetNumberService.setNumber(number);
         GetNumberService.setNumberMethod(action);
         GetNumberService.getNumBerInfo(GetNumberService.accessURL);
+        parseJson(GetNumberService.getNumBerInfo(GetNumberService.accessURL),Integer.parseInt(intent.getStringExtra("nm1")),Integer.parseInt(intent.getStringExtra("nm2")));
     }
 }
